@@ -1,10 +1,13 @@
-export default function updateUniqueItems(arr) {
-  const uniqueItems = new Set(arr);
-  for (const item of uniqueItems) {
-    if (item === 'Apples') {
-      uniqueItems.delete(item);
-      uniqueItems.add('Apples');
-    }
+export default function updateUniqueItems(map) {
+  if (!(map instanceof Map)) {
+    throw new Error('Cannot process');
   }
-  return uniqueItems;
+
+  map.forEach((value, key) => {
+    if (value === 1) {
+      map.set(key, 100);
+    }
+  });
+
+  return map;
 }
